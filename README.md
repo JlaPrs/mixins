@@ -6,6 +6,7 @@ Color Theming
 Das Mixin dient dazu mehrere Farb-Varianten einer Website einfach umzusetzen. Man hat zum Beispiel eine Headline, die immer die gleiche Schrift und Schriftgröße hat aber je nach Seiten-Theme mal rot oder mal Blau sein kann.
 
 Mixin Color Theming
+```scss
 // Color theming
 //
 // @param {String} $name - name of the theme
@@ -22,7 +23,7 @@ Mixin Color Theming
 //   box-shadow: 0 2px 5px rgba(0, 181, 198, 0.5);
 // }
  
- ```scss
+ 
  @mixin itl-theme($name, $color) {
   $theme-color: $color;
   $theme-shade: darken($color, 10%);
