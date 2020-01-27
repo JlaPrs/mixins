@@ -22,7 +22,8 @@ Mixin Color Theming
 //   box-shadow: 0 2px 5px rgba(0, 181, 198, 0.5);
 // }
  
-@mixin itl-theme($name, $color) {
+ ```css
+ @mixin itl-theme($name, $color) {
   $theme-color: $color;
   $theme-shade: darken($color, 10%);
  
@@ -37,6 +38,8 @@ Mixin Color Theming
     }
   }
 }
+
+ ```
 CI Font Mixin
 Das Mixin erstellt die Basis-Font-Styles für ein Website. Das ist vor allem dann nützlich, wenn man kein Framework wie Bootstrap oder Foundation Sites im Hintergrund hat, was diese Aufgabe übernimmt. Damit das Mixin funtioniert, benötigt man eine SCSS-Map in dem man die verschiedenen Werte definiert.
 
