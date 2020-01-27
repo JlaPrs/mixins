@@ -13,18 +13,18 @@ Das Mixin dient dazu mehrere Farb-Varianten einer Website einfach umzusetzen. Ma
 // @param {String} $color - CSS color value
 //
 // @example usage
-// @include itl-theme(itl, #00e4f9);
+// @include theme(themeName, #00e4f9);
 //
 // @example output
-// .itl .element { color: #00e4f9; }
+// .themeName .element { color: #00e4f9; }
 //
-// .itl .other-element {
+// .themeName .other-element {
 //   border-color: #00e4f9;
 //   box-shadow: 0 2px 5px rgba(0, 181, 198, 0.5);
 // }
  
  
- @mixin itl-theme($name, $color) {
+ @mixin theme($name, $color) {
   $theme-color: $color;
   $theme-shade: darken($color, 10%);
  
