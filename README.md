@@ -22,7 +22,7 @@ Mixin Color Theming
 //   box-shadow: 0 2px 5px rgba(0, 181, 198, 0.5);
 // }
  
- ```css
+ ```scss
  @mixin itl-theme($name, $color) {
   $theme-color: $color;
   $theme-shade: darken($color, 10%);
