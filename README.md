@@ -132,3 +132,46 @@ Das Mixin wird benutzt um bei Retina-Screens andere Bilder zu laden. Die alterna
 }
 
 ```
+
+
+## Mixin media queries
+```scss
+@mixin breakpoint($size) {
+  $desktop: '(min-width: 1024px)';
+  $tablet: '(min-width: 768px) and (max-width: 1023px)';
+  $mobile: '(max-width: 767px)';
+
+  @if $size == desktop {
+    @media only screen and #{$desktop} {
+      @content;
+    }
+  } @else if $size == tablet {
+    @media only screen and #{$tablet} {
+      @content;
+    }
+  } @else if $size == mobile {
+    @media only screen and #{$mobile} {
+      @content;
+    }
+  } @else {
+    @media only screen and #{$size} {
+      @content;
+    }
+  }
+}
+
+
+// Usage
+.wrapper {
+  @include breakpoint('desktop') {
+    width: 85%;
+  }
+
+  @include breakpoint('tablet') {
+    width: 90%;
+  }
+
+  margin: 0 auto;
+  width: 100%;
+}
+```
