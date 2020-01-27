@@ -5,7 +5,7 @@ Some useful mixins for scss
 Color Theming
 Das Mixin dient dazu mehrere Farb-Varianten einer Website einfach umzusetzen. Man hat zum Beispiel eine Headline, die immer die gleiche Schrift und Schriftgröße hat aber je nach Seiten-Theme mal rot oder mal Blau sein kann.
 
-Mixin Color Theming
+## Mixin Color Theming
 ```scss
 // Color theming
 //
@@ -41,10 +41,11 @@ Mixin Color Theming
 }
 
  ```
-CI Font Mixin
+## CI Font Mixin
 Das Mixin erstellt die Basis-Font-Styles für ein Website. Das ist vor allem dann nützlich, wenn man kein Framework wie Bootstrap oder Foundation Sites im Hintergrund hat, was diese Aufgabe übernimmt. Damit das Mixin funtioniert, benötigt man eine SCSS-Map in dem man die verschiedenen Werte definiert.
 
 Mixin CI Font
+```scss
 // CI Font
 //
 // @param {Map|String} - Font famaily or setting map
@@ -100,10 +101,13 @@ Mixin CI Font
     }
   }
 }
+```
+
 Retine Images
 Das Mixin wird benutzt um bei Retina-Screens andere Bilder zu laden. Die alternativen Bilder sollten in den Dimensionen doppelt so hoch und breit sein, wie die Originale, die Auflösung von 72 DPI bleibt jedoch bestehen.
 
-Mixin Retina Images
+## Mixin Retina Images
+```scss
 // Retina images
 //
 // @param {String} $image - Path to image file
@@ -126,3 +130,5 @@ Mixin Retina Images
     background-size: $width $height;
   }
 }
+
+```
