@@ -5,25 +5,12 @@ Some useful mixins for scss
 Color Theming
 Das Mixin dient dazu mehrere Farb-Varianten einer Website einfach umzusetzen. Man hat zum Beispiel eine Headline, die immer die gleiche Schrift und Schriftgröße hat aber je nach Seiten-Theme mal rot oder mal Blau sein kann.
 
-## Mixin Color Theming
+### Color Theming
+#### Mixin
 ```scss
-// Color theming
-//
 // @param {String} $name - name of the theme
 // @param {String} $color - CSS color value
-//
-// @example usage
-// @include theme(themeName, #00e4f9);
-//
-// @example output
-// .themeName .element { color: #00e4f9; }
-//
-// .themeName .other-element {
-//   border-color: #00e4f9;
-//   box-shadow: 0 2px 5px rgba(0, 181, 198, 0.5);
-// }
- 
- 
+
  @mixin theme($name, $color) {
   $theme-color: $color;
   $theme-shade: darken($color, 10%);
@@ -39,41 +26,64 @@ Das Mixin dient dazu mehrere Farb-Varianten einer Website einfach umzusetzen. Ma
     }
   }
 }
+```
+#### Usage
+```scss
+.anotherBrand {
+  @include theme(themeName, #00e4f9);
+  display: flex;
+  padding: 15px;
+  ...
+  ..
+}
 
- ```
-## CI Font Mixin
+```
+___
+
+### Font (very useful)
 Das Mixin erstellt die Basis-Font-Styles für ein Website. Das ist vor allem dann nützlich, wenn man kein Framework wie Bootstrap oder Foundation Sites im Hintergrund hat, was diese Aufgabe übernimmt. Damit das Mixin funtioniert, benötigt man eine SCSS-Map in dem man die verschiedenen Werte definiert.
 
-Mixin CI Font
+Additional information: You don't have to use all mappings which are in the following mixin (e.g. letter-spacing or text-transform aren't used that often, so its not necessary) and in this case a font-base is already declared, so if there won't declare a font-family this mixin already has a fallback and use $font-base as the font-family.
+
+#### Mixin
 ```scss
-// CI Font
-//
-// @param {Map|String} - Font famaily or setting map
+// variables for breakpoints have to be declared
+// @param {Map|String} - Font family or setting map
+
+$screen-sm-min: 768px;
+$screen-md-min: 1024px;
+$screen-lg-min: 1280px;
+$screen—xl-min: 1520px;
+$ci-font-base: arial;
+$fontFamily: helvetica;
  
-@mixin ci-font($font: (font: $ci-font-base)) {
+@mixin gkk-font($font: (font: $ci-font-base)) {
   margin: 0;
- 
-  $fontFamily: $ci-font-base;
-    @if (map-has-key($font, "font")) {
-      $fontFamily: map-get($font, "font");
-    }
- 
   font-family: $fontFamily;
   font-weight: normal;
- 
-  @if (map-has-key($font, "size-xs")) {
-    font-size: map-get($font, "size-xs");
+  
+  @if (map-has-key($font, "font")) {
+    font-family: map-get($font, "font");
   }
+  
   @if (map-has-key($font, "letter-spacing")) {
     letter-spacing: map-get($font, "letter-spacing");
   }
+  
   @if (map-has-key($font, "text-transform")) {
     text-transform: map-get($font, "text-transform");
   }
+  
   @if (map-has-key($font, "line-height")) {
     line-height: map-get($font, "line-height");
   }
+  
+  // min 375px
+  @if (map-has-key($font, "size-xs")) {
+    font-size: map-get($font, "size-xs");
+  }
  
+ // min 768px
   @if (map-has-key($font, "size-sm")) {
     @media (min-width: $breakpoint—sm-min) {
       font-size: map-get($font, "size-sm");
@@ -96,10 +106,19 @@ Mixin CI Font
  
   // min 1520px
   @if (map-has-key($font, "size-xl”)) {
-    @media (min-width: $breakpoint—sm) {
+    @media (min-width: $screen—xl-min) {
       font-size: map-get($font, "size-xl”);
     }
   }
+}
+```
+#### Usage
+```scss
+.product-headline {
+  @include gkk-font((font: $ci-font-base, size-sm: 20px, size-md: 40px, size-lg: 70px));
+  margin-bottom: 30px;
+  ...
+  ..
 }
 ```
 
