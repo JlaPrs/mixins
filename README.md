@@ -41,9 +41,9 @@ Das Mixin dient dazu mehrere Farb-Varianten einer Website einfach umzusetzen. Ma
 ___
 
 ### Font (very useful)
-Das Mixin erstellt die Basis-Font-Styles für ein Website. Das ist vor allem dann nützlich, wenn man kein Framework wie Bootstrap oder Foundation Sites im Hintergrund hat, was diese Aufgabe übernimmt. Damit das Mixin funtioniert, benötigt man eine SCSS-Map in dem man die verschiedenen Werte definiert.
+> Das Mixin erstellt die Basis-Font-Styles für ein Website. Das ist vor allem dann nützlich, wenn man kein Framework wie Bootstrap oder Foundation Sites im Hintergrund hat, was diese Aufgabe übernimmt. Damit das Mixin funtioniert, benötigt man eine SCSS-Map in dem man die verschiedenen Werte definiert.
 
-Additional information: You don't have to use all mappings which are in the following mixin (e.g. letter-spacing or text-transform aren't used that often, so its not necessary) and in this case a font-base is already declared, so if there won't declare a font-family this mixin already has a fallback and use $font-base as the font-family.
+> Additional information: You don't have to use all mappings which are in the following mixin (e.g. letter-spacing or text-transform aren't used that often, so its not necessary) and in this case a font-base is already declared, so if there won't declare a font-family this mixin already has a fallback and use $font-base as the font-family.
 
 #### Mixin
 ```scss
@@ -115,29 +115,25 @@ $fontFamily: helvetica;
 #### Usage
 ```scss
 .product-headline {
-  @include gkk-font((font: $ci-font-base, size-sm: 20px, size-md: 40px, size-lg: 70px));
+  @include gkk-font((size-sm: 20px, size-md: 40px, size-lg: 70px));
   margin-bottom: 30px;
   ...
   ..
 }
 ```
+___
 
-Retine Images
-Das Mixin wird benutzt um bei Retina-Screens andere Bilder zu laden. Die alternativen Bilder sollten in den Dimensionen doppelt so hoch und breit sein, wie die Originale, die Auflösung von 72 DPI bleibt jedoch bestehen.
+### Retine Images
 
-## Mixin Retina Images
+> Das Mixin wird benutzt um bei Retina-Screens andere Bilder zu laden. Die alternativen Bilder sollten in den Dimensionen doppelt so hoch und breit sein, wie die Originale, die Auflösung von 72 DPI bleibt jedoch bestehen.
+
+#### Mixin
 ```scss
 // Retina images
 //
 // @param {String} $image - Path to image file
 // @param {Number} $width - Image width
 // @param {Number} $height - Image height
-//
-// @example
-// .logo {
-//   @include retina(“logo2x.png", 100px, 25px);
-//   background: url("logo.png") no-repeat;
-// }
  
 @mixin retina($image, $width, $height) {
   @media (min--moz-device-pixel-ratio: 1.3),
@@ -149,11 +145,19 @@ Das Mixin wird benutzt um bei Retina-Screens andere Bilder zu laden. Die alterna
     background-size: $width $height;
   }
 }
-
 ```
 
+#### Usage
+```scss
+.logo {
+  @include retina(“logo2x.png", 100px, 25px);
+  background: url("logo.png") no-repeat;
+}
+```
+___
 
-## Mixin media queries
+### Mixin media queries
+#### Mixin
 ```scss
 @mixin breakpoint($size) {
   $desktop: '(min-width: 1024px)';
@@ -178,9 +182,9 @@ Das Mixin wird benutzt um bei Retina-Screens andere Bilder zu laden. Die alterna
     }
   }
 }
-
-
-// Usage
+```
+#### Usage
+```scss
 .wrapper {
   @include breakpoint('desktop') {
     width: 85%;
