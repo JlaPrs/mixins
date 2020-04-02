@@ -156,7 +156,9 @@ ___
 ```
 ___
 
-### Mixin media queries
+### Media queries
+> You can go mobile first too. Its up to you.
+
 #### Mixin
 ```scss
 @mixin breakpoint($size) {
@@ -186,15 +188,37 @@ ___
 #### Usage
 ```scss
 .wrapper {
-  @include breakpoint('desktop') {
-    width: 85%;
-  }
-
+  margin: 0 auto;
+  width: 100%;
+  
   @include breakpoint('tablet') {
     width: 90%;
   }
-
-  margin: 0 auto;
-  width: 100%;
+  
+  @include breakpoint('desktop') {
+    width: 85%;
+  }  
 }
 ```
+___
+
+### Pseudo
+#### Mixin
+```scss
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+```
+#### Usage
+```scss
+.someClass {
+  @include pseudo;
+  ...
+  ..
+}
+```
+___
+
+< Some more helpful mixins will be added asap. :D
